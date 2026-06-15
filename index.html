@@ -1,0 +1,88 @@
+<!DOCTYPE html> <!-- # Indique que le document utilise HTML5 -->
+
+<html lang="fr"> <!-- # Début de la page HTML en français -->
+
+<head> <!-- # Début de l'en-tête de la page -->
+    <meta charset="UTF-8"> <!-- # Permet l'affichage correct des caractères spéciaux -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- # Adapte la page aux écrans mobiles -->
+    <title>Aucontraire Mode</title> <!-- # Titre affiché dans l'onglet du navigateur -->
+
+    <style> /* # Début du CSS */
+
+        body { /* # Style général de la page */
+            margin: 0; /* # Supprime les marges par défaut */
+            font-family: Arial, sans-serif; /* # Définit la police */
+            display: flex; /* # Utilise Flexbox */
+            flex-direction: column; /* # Organise les éléments verticalement */
+            height: 100vh; /* # Utilise toute la hauteur de la fenêtre */
+        }
+
+        header { /* # Barre du haut */
+            background-color: #222; /* # Couleur de fond sombre */
+            color: white; /* # Couleur du texte */
+            padding: 15px; /* # Espace intérieur */
+            font-size: 24px; /* # Taille du texte */
+            font-weight: bold; /* # Texte en gras */
+        }
+
+        .container { /* # Zone principale */
+            display: flex; /* # Affiche les éléments côte à côte */
+            flex: 1; /* # Prend l'espace disponible */
+        }
+
+        .sidebar { /* # Barre latérale gauche */
+            width: 200px; /* # Largeur de la barre */
+            background-color: #f0f0f0; /* # Couleur de fond */
+            padding: 10px; /* # Espace intérieur */
+            box-sizing: border-box; /* # Inclut le padding dans la largeur */
+        }
+
+        .tab { /* # Style de l'onglet */
+            background-color: #ddd; /* # Couleur de fond */
+            padding: 10px; /* # Espace intérieur */
+            margin-bottom: 10px; /* # Espace sous l'onglet */
+            cursor: pointer; /* # Curseur cliquable */
+            border-radius: 5px; /* # Coins arrondis */
+        }
+
+        .content { /* # Zone de contenu principal */
+            flex: 1; /* # Prend tout l'espace restant */
+            padding: 20px; /* # Espace intérieur */
+        }
+
+        footer { /* # Pied de page */
+            background-color: #222; /* # Couleur de fond sombre */
+            color: white; /* # Couleur du texte */
+            text-align: center; /* # Centre le texte */
+            padding: 10px; /* # Espace intérieur */
+        }
+
+    </style> <!-- # Fin du CSS -->
+</head> <!-- # Fin de l'en-tête -->
+
+<body> <!-- # Début du contenu visible -->
+
+    <header> <!-- # Barre supérieure -->
+        Aucontraire Mode <!-- # Nom du site affiché en haut à gauche -->
+    </header>
+
+    <div class="container"> <!-- # Conteneur principal -->
+
+        <div class="sidebar"> <!-- # Barre latérale gauche -->
+            <div class="tab">Accueil</div> <!-- # Premier onglet -->
+        </div>
+
+        <div class="content"> <!-- # Zone où tu ajouteras ton contenu -->
+            <h1>Bienvenue sur Aucontraire Mode</h1> <!-- # Titre principal -->
+            <p>Ajoute ici ton contenu au fur et à mesure.</p> <!-- # Texte temporaire -->
+        </div>
+
+    </div>
+
+    <footer> <!-- # Pied de page -->
+        Par Adrien Houtin et Tim Bosh <!-- # Crédit des créateurs -->
+    </footer>
+
+</body> <!-- # Fin du contenu visible -->
+
+</html> <!-- # Fin du document HTML -->
