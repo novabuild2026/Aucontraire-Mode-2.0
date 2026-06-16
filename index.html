@@ -1,88 +1,170 @@
-<!DOCTYPE html> <!-- # Indique que le document utilise HTML5 -->
+<!DOCTYPE html>
+<html lang="fr">
 
-<html lang="fr"> <!-- # Début de la page HTML en français -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aucontraire Mode</title>
 
-<head> <!-- # Début de l'en-tête de la page -->
-    <meta charset="UTF-8"> <!-- # Permet l'affichage correct des caractères spéciaux -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- # Adapte la page aux écrans mobiles -->
-    <title>Aucontraire Mode</title> <!-- # Titre affiché dans l'onglet du navigateur -->
+    <style>
 
-    <style> /* # Début du CSS */
-
-        body { /* # Style général de la page */
-            margin: 0; /* # Supprime les marges par défaut */
-            font-family: Arial, sans-serif; /* # Définit la police */
-            display: flex; /* # Utilise Flexbox */
-            flex-direction: column; /* # Organise les éléments verticalement */
-            height: 100vh; /* # Utilise toute la hauteur de la fenêtre */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        header { /* # Barre du haut */
-            background-color: #222; /* # Couleur de fond sombre */
-            color: white; /* # Couleur du texte */
-            padding: 15px; /* # Espace intérieur */
-            font-size: 24px; /* # Taille du texte */
-            font-weight: bold; /* # Texte en gras */
+        body{
+            font-family: Arial, sans-serif;
         }
 
-        .container { /* # Zone principale */
-            display: flex; /* # Affiche les éléments côte à côte */
-            flex: 1; /* # Prend l'espace disponible */
+        /* Barre du haut */
+        header{
+            background:white;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 50px;
+            box-shadow:0 2px 5px rgba(0,0,0,0.1);
+            position:fixed;
+            width:100%;
+            top:0;
+            z-index:1000;
         }
 
-        .sidebar { /* # Barre latérale gauche */
-            width: 200px; /* # Largeur de la barre */
-            background-color: #f0f0f0; /* # Couleur de fond */
-            padding: 10px; /* # Espace intérieur */
-            box-sizing: border-box; /* # Inclut le padding dans la largeur */
+        .logo{
+            font-size:28px;
+            font-weight:bold;
         }
 
-        .tab { /* # Style de l'onglet */
-            background-color: #ddd; /* # Couleur de fond */
-            padding: 10px; /* # Espace intérieur */
-            margin-bottom: 10px; /* # Espace sous l'onglet */
-            cursor: pointer; /* # Curseur cliquable */
-            border-radius: 5px; /* # Coins arrondis */
+        nav ul{
+            display:flex;
+            list-style:none;
+            gap:30px;
         }
 
-        .content { /* # Zone de contenu principal */
-            flex: 1; /* # Prend tout l'espace restant */
-            padding: 20px; /* # Espace intérieur */
+        nav a{
+            text-decoration:none;
+            color:black;
+            font-weight:500;
         }
 
-        footer { /* # Pied de page */
-            background-color: #222; /* # Couleur de fond sombre */
-            color: white; /* # Couleur du texte */
-            text-align: center; /* # Centre le texte */
-            padding: 10px; /* # Espace intérieur */
+        nav a:hover{
+            color:#777;
         }
 
-    </style> <!-- # Fin du CSS -->
-</head> <!-- # Fin de l'en-tête -->
+        /* Grande bannière */
+        .hero{
+            height:100vh;
+            background-image:url("https://images.unsplash.com/photo-1523398002811-999ca8dec234");
+            background-size:cover;
+            background-position:center;
+            position:relative;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            color:white;
+        }
 
-<body> <!-- # Début du contenu visible -->
+        .hero::before{
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.35);
+        }
 
-    <header> <!-- # Barre supérieure -->
-        Aucontraire Mode <!-- # Nom du site affiché en haut à gauche -->
+        .hero-content{
+            position:relative;
+            z-index:1;
+        }
+
+        .hero h1{
+            font-size:70px;
+            margin-bottom:20px;
+            text-transform:uppercase;
+        }
+
+        .hero p{
+            font-size:24px;
+            margin-bottom:30px;
+        }
+
+        .btn{
+            display:inline-block;
+            padding:15px 35px;
+            background:white;
+            color:black;
+            text-decoration:none;
+            border-radius:30px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#ddd;
+        }
+
+        /* Section contenu */
+        .content{
+            padding:80px 50px;
+            text-align:center;
+        }
+
+        .content h2{
+            margin-bottom:20px;
+        }
+
+        footer{
+            background:#111;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Aucontraire Mode</div>
+
+        <nav>
+            <ul>
+                <li><a href="#">Nouveautés</a></li>
+                <li><a href="#">Homme</a></li>
+                <li><a href="#">Femme</a></li>
+                <li><a href="#">Enfant</a></li>
+                <li><a href="#">Sport</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container"> <!-- # Conteneur principal -->
+    <section class="hero">
 
-        <div class="sidebar"> <!-- # Barre latérale gauche -->
-            <div class="tab">Accueil</div> <!-- # Premier onglet -->
+        <div class="hero-content">
+            <h1>La Mode Continue</h1>
+            <p>Une collection inspirée par les tendances d'aujourd'hui.</p>
+            <a href="#" class="btn">Acheter</a>
         </div>
 
-        <div class="content"> <!-- # Zone où tu ajouteras ton contenu -->
-            <h1>Bienvenue sur Aucontraire Mode</h1> <!-- # Titre principal -->
-            <p>Ajoute ici ton contenu au fur et à mesure.</p> <!-- # Texte temporaire -->
-        </div>
+    </section>
 
-    </div>
+    <section class="content">
+        <h2>Bienvenue sur Aucontraire Mode</h2>
+        <p>
+            Découvrez nos nouvelles collections et les dernières tendances.
+        </p>
+    </section>
 
-    <footer> <!-- # Pied de page -->
-        Par Adrien Houtin et Tim Bosch <!-- # Crédit des créateurs -->
+    <footer>
+        Par Adrien Houtin et Tim Bosch
     </footer>
 
-</body> <!-- # Fin du contenu visible -->
+</body>
 
-</html> <!-- # Fin du document HTML -->
+</html>
