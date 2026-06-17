@@ -215,22 +215,28 @@
 
 .btn{
     display:inline-block;
-    background:white;
-    color:black !important;
-    padding:15px 35px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-    font-size:18px;
+    padding:16px 42px;
     border:2px solid white;
+    border-radius:50px;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    font-size:18px;
+    backdrop-filter:blur(5px);
+    transition:all 0.3s ease;
     position:relative;
     z-index:10;
-    transition:all 0.3s ease;
 }
 
 .btn:hover{
-    background:#f0f0f0;
-    color:black !important;
+    background:rgba(255,255,255,0.35);
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(255,255,255,0.2);
+}
+
+.btn:visited{
+    color:white;
 }
 
         /* Section contenu */
