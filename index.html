@@ -156,44 +156,61 @@
             color:#777;
         }
 
-        /* Grande bannière */
-        .hero{
-            height:100vh;
-            background-image:url("https://images.unsplash.com/photo-1523398002811-999ca8dec234");
-            background-size:cover;
-            background-position:center;
-            position:relative;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            color:white;
-        }
+/* Grande bannière avec slider */
 
-        .hero::before{
-            content:"";
-            position:absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            background:rgba(0,0,0,0.35);
-        }
+.hero{
+    height:100vh;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
 
-        .hero-content{
-            position:relative;
-            z-index:1;
-        }
+.hero::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.35);
+    z-index:1;
+}
 
-        .hero h1{
-            font-size:70px;
-            margin-bottom:20px;
-            text-transform:uppercase;
-        }
+.hero-content{
+    position:relative;
+    z-index:2;
+}
 
-        .hero p{
-            font-size:24px;
-            margin-bottom:30px;
+.hero h1{
+    font-size:70px;
+    margin-bottom:20px;
+    text-transform:uppercase;
+}
+
+.hero p{
+    font-size:24px;
+    margin-bottom:30px;
+}
+
+/* Images du slider */
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:opacity 1.5s ease-in-out;
+}
+
+.slide.active{
+    opacity:1;
+}
         }
 
         .btn{
@@ -247,15 +264,27 @@
         </nav>
     </header>
 
-    <section class="hero">
+<section class="hero">
 
-        <div class="hero-content">
-            <h1>La Mode Continue</h1>
-            <p>Une collection inspirée par les tendances d'aujourd'hui.</p>
-            <a href="#" class="btn">Acheter</a>
-        </div>
+    <div class="slide active"
+         style="background-image:url('https://images.unsplash.com/photo-1523398002811-999ca8dec234');">
+    </div>
 
-    </section>
+    <div class="slide"
+         style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8');">
+    </div>
+
+    <div class="slide"
+         style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b');">
+    </div>
+
+    <div class="hero-content">
+        <h1>La Mode Continue</h1>
+        <p>Une collection inspirée par les tendances d'aujourd'hui.</p>
+        <a href="#" class="btn">Acheter</a>
+    </div>
+
+</section>
 
     <section class="content">
         <h2>Bienvenue sur Tsogo Lingerie</h2>
@@ -366,6 +395,22 @@
     </div>
 
 </footer>
+
+    <script>
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+
+    currentSlide++;
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+
+    slides[currentSlide].classList.add('active');
+}, 4000);
+</script>
 
 </body>
 
