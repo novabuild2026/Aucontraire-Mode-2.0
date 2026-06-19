@@ -458,6 +458,38 @@
 
 </footer>
 
+        <!-- Fenêtre de connexion -->
+
+<div class="modal" id="authModal">
+
+    <div class="modal-content">
+
+        <span class="close" id="closeModal">&times;</span>
+
+        <h2>Connexion</h2>
+
+        <input type="text" id="loginUsername" placeholder="Identifiant">
+
+        <input type="password" id="loginPassword" placeholder="Mot de passe">
+
+        <button onclick="login()">Se connecter</button>
+
+        <hr style="margin:20px 0;">
+
+        <h2>Créer un compte</h2>
+
+        <input type="text" id="registerUsername" placeholder="Identifiant">
+
+        <input type="email" id="registerEmail" placeholder="Adresse Email">
+
+        <input type="password" id="registerPassword" placeholder="Mot de passe">
+
+        <button onclick="register()">Créer un compte</button>
+
+    </div>
+
+</div>
+
 <script>
 
 // Slider
@@ -578,37 +610,7 @@ window.addEventListener("load", () => {
 
 </script>
 
-    <!-- Fenêtre de connexion -->
 
-<div class="modal" id="authModal">
-
-    <div class="modal-content">
-
-        <span class="close" id="closeModal">&times;</span>
-
-        <h2>Connexion</h2>
-
-        <input type="text" id="loginUsername" placeholder="Identifiant">
-
-        <input type="password" id="loginPassword" placeholder="Mot de passe">
-
-        <button onclick="login()">Se connecter</button>
-
-        <hr style="margin:20px 0;">
-
-        <h2>Créer un compte</h2>
-
-        <input type="text" id="registerUsername" placeholder="Identifiant">
-
-        <input type="email" id="registerEmail" placeholder="Adresse Email">
-
-        <input type="password" id="registerPassword" placeholder="Mot de passe">
-
-        <button onclick="register()">Créer un compte</button>
-
-    </div>
-
-</div>
 
 </body>
 
