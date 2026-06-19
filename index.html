@@ -253,14 +253,68 @@
             padding:20px;
         }
 
+        .login-btn{
+    background:black;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    z-index:2000;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    width:350px;
+}
+
+.modal-content h2{
+    margin-bottom:20px;
+}
+
+.modal-content input{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+}
+
+.modal-content button{
+    width:100%;
+    padding:12px;
+    background:black;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.close{
+    float:right;
+    cursor:pointer;
+    font-size:25px;
+}
+
     </style>
 </head>
 
 <body>
 
     <header>
+        <button id="loginBtn" class="login-btn">Connexion</button>
         <div class="logo">Tsogo Lingerie</div>
-
         <nav>
             <ul>
                 <li><a href="#">Nouveautés</a></li>
@@ -404,7 +458,10 @@
 
 </footer>
 
-    <script>
+<script>
+
+// Slider
+
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
 
@@ -412,13 +469,146 @@ setInterval(() => {
     slides[currentSlide].classList.remove('active');
 
     currentSlide++;
+
     if(currentSlide >= slides.length){
         currentSlide = 0;
     }
 
     slides[currentSlide].classList.add('active');
+
 }, 4000);
+
+
+// Fenêtre connexion
+
+const modal = document.getElementById("authModal");
+const loginBtn = document.getElementById("loginBtn");
+const closeModal = document.getElementById("closeModal");
+
+loginBtn.onclick = () => {
+    modal.style.display = "flex";
+};
+
+closeModal.onclick = () => {
+    modal.style.display = "none";
+};
+
+window.onclick = (e) => {
+    if(e.target === modal){
+        modal.style.display = "none";
+    }
+};
+
+
+// Création compte
+
+function register(){
+
+    const username = document.getElementById("registerUsername").value;
+    const email = document.getElementById("registerEmail").value;
+    const password = document.getElementById("registerPassword").value;
+
+    if(!username || !email || !password){
+        alert("Veuillez remplir tous les champs");
+        return;
+    }
+
+    const user = {
+        username,
+        email,
+        password
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    alert("Compte créé !");
+}
+
+
+// Connexion
+
+function login(){
+
+    const username = document.getElementById("loginUsername").value;
+    const password = document.getElementById("loginPassword").value;
+
+    const savedUser =
+        JSON.parse(localStorage.getItem("user"));
+
+    if(
+        savedUser &&
+        savedUser.username === username &&
+        savedUser.password === password
+    ){
+        alert("Connexion réussie !");
+        loginBtn.textContent =
+            "👤 " + savedUser.username;
+
+        modal.style.display = "none";
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+    }
+    else{
+        alert("Identifiant ou mot de passe incorrect");
+    }
+}
+
+
+// Reconnexion automatique
+
+window.addEventListener("load", () => {
+
+    const savedUser =
+        JSON.parse(localStorage.getItem("user"));
+
+    const loggedIn =
+        localStorage.getItem("loggedIn");
+
+    if(savedUser && loggedIn === "true"){
+
+        loginBtn.textContent =
+            "👤 " + savedUser.username;
+
+    }
+
+});
+
 </script>
+
+    <!-- Fenêtre de connexion -->
+
+<div class="modal" id="authModal">
+
+    <div class="modal-content">
+
+        <span class="close" id="closeModal">&times;</span>
+
+        <h2>Connexion</h2>
+
+        <input type="text" id="loginUsername" placeholder="Identifiant">
+
+        <input type="password" id="loginPassword" placeholder="Mot de passe">
+
+        <button onclick="login()">Se connecter</button>
+
+        <hr style="margin:20px 0;">
+
+        <h2>Créer un compte</h2>
+
+        <input type="text" id="registerUsername" placeholder="Identifiant">
+
+        <input type="email" id="registerEmail" placeholder="Adresse Email">
+
+        <input type="password" id="registerPassword" placeholder="Mot de passe">
+
+        <button onclick="register()">Créer un compte</button>
+
+    </div>
+
+</div>
 
 </body>
 
