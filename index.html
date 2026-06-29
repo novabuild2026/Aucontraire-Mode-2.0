@@ -2,11 +2,34 @@
 <html lang="fr">
 
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tsogo Lingerie</title>
 
     <style>
+
+body{
+
+background:#f8f8f8;
+font-family:'Poppins',sans-serif;
+
+}
+
+
+header{
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
 
 .topbar{
     background:#111;
@@ -16,6 +39,53 @@
     font-size:14px;
     letter-spacing:1px;
 }
+
+@media(max-width:900px){
+
+header{
+
+flex-wrap:wrap;
+
+}
+
+.search{
+
+width:100%;
+
+margin-top:15px;
+
+}
+
+nav ul{
+
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+}
+
+.panier{
+
+font-size:22px;
+font-weight:bold;
+
+}
+
+.search{
+
+padding:10px 18px;
+
+border-radius:30px;
+
+margin:0 20px;
+
+border:1px solid #ddd;
+
+width:220px;
+
+}
+        
         /* SECTION PRODUITS */
 
 .produits{
@@ -26,8 +96,68 @@
     background:#f5f5f5;
 }
 
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
 .produit{
-    text-align:center;
+
+position:relative;
+text-align:center;
+background:white;
+padding:25px;
+border-radius:18px;
+transition:.35s;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+overflow:hidden;
+animation:fade .8s;
+
+}
+
+.produit img{
+    transition:.4s;
+}
+
+.produit:hover img{
+    transform:scale(1.08);
+}
+
+.produit button{
+
+    background:black;
+    color:white;
+    border:none;
+    padding:14px 35px;
+    border-radius:40px;
+    cursor:pointer;
+
+    font-size:17px;
+    transition:.3s;
+
+}
+
+.produit button:hover{
+
+    background:#444;
+    transform:scale(1.05);
+
 }
 
 .produit img{
@@ -35,16 +165,7 @@
     max-width:100%;
 }
 
-.produit button{
-    margin-top:20px;
-    background:black;
-    color:white;
-    border:none;
-    padding:12px 30px;
-    border-radius:30px;
-    font-size:20px;
-    cursor:pointer;
-}
+
 
 /* CATÉGORIES */
 
@@ -101,6 +222,28 @@
     color:#555;
 }
 
+.badge{
+
+position:absolute;
+
+top:15px;
+
+left:15px;
+
+background:#e60023;
+
+color:white;
+
+padding:6px 12px;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:bold;
+
+}
+
 /* MOBILE */
 
 @media(max-width:900px){
@@ -126,23 +269,8 @@
             box-sizing:border-box;
         }
 
-        body{
-            font-family: Arial, sans-serif;
-        }
 
         /* Barre du haut */
-        header{
-            background:white;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:20px 50px;
-            box-shadow:0 2px 5px rgba(0,0,0,0.1);
-            position:fixed;
-            width:100%;
-            top:0;
-            z-index:1000;
-        }
 
         .logo{
             font-size:28px;
@@ -310,6 +438,38 @@
     cursor:pointer;
 }
 
+.avantages{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+padding:80px;
+
+background:#fafafa;
+
+text-align:center;
+
+gap:40px;
+
+}
+
+.avantages h2{
+
+font-size:45px;
+
+margin-bottom:15px;
+
+}
+
+.avantages p{
+
+color:#666;
+
+margin-top:10px;
+
+}
+
 .close{
     float:right;
     cursor:pointer;
@@ -321,10 +481,15 @@
 
 <body>
 
+    <div class="topbar">
+    🚚 Livraison offerte dès 50 € • Retours gratuits sous 30 jours
+    </div>
+    
     <header>
-        <div class="topbar">
-        🚚 Livraison offerte dès 50 € • Retours gratuits sous 30 jours
+        <div class="panier">
+        🛒 <span id="panier">0</span>
         </div>
+        <input type="text" placeholder="Rechercher..." class="search">
         <button id="loginBtn" class="login-btn">Connexion</button>
         <div class="logo">Tsogo Lingerie</div>
         <nav>
@@ -367,10 +532,6 @@
         </p>
     </section>
 
-    <footer>
-        Par Adrien Houtin et Tim Bosch
-    </footer>
-
     <!-- SECTION PRODUITS -->
 
 <section class="produits">
@@ -378,17 +539,70 @@
     <div class="produit">
         <img src="airforce1.jpg" alt="Air Force 1">
         <button>Air Force 1</button>
+        <div class="badge">
+        Nouveau
+        </div>
     </div>
 
     <div class="produit">
         <img src="airmax90.jpg" alt="Air Max 90">
         <button>Air Max 90</button>
+        <div class="badge">
+        Nouveau
+        </div>
     </div>
 
     <div class="produit">
         <img src="p6000.jpg" alt="P-6000">
         <button>P-6000</button>
+        <div class="badge">
+        Nouveau
+        </div>
     </div>
+
+</section>
+
+    <section class="avantages">
+
+<div>
+
+<h2>🚚</h2>
+
+<h3>Livraison rapide</h3>
+
+<p>Expédition sous 24h.</p>
+
+</div>
+
+<div>
+
+<h2>🔒</h2>
+
+<h3>Paiement sécurisé</h3>
+
+<p>Paiement 100% sécurisé.</p>
+
+</div>
+
+<div>
+
+<h2>↩️</h2>
+
+<h3>Retours faciles</h3>
+
+<p>30 jours pour changer d'avis.</p>
+
+</div>
+
+<div>
+
+<h2>⭐</h2>
+
+<h3>Qualité garantie</h3>
+
+<p>Produits sélectionnés avec soin.</p>
+
+</div>
 
 </section>
 
